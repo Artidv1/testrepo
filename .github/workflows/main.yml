@@ -19,4 +19,4 @@ jobs:
   # Build the Docker image
    - name: Build BlazorApp
      run: |-
-         docker rmi $(docker images | grep "<none>" | awk '{print $3}') &> /dev/null 2>/dev/null
+         docker rmi $(docker images | grep "<none>" | awk '{print $3}') &> /dev/null 2>/dev/null; exit 0
