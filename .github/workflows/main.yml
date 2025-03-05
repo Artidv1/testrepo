@@ -1,0 +1,22 @@
+name: BlazorApp
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+    paths:
+      - 'BlazorApp/**'
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - 'BlazorApp/**'
+      
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+  # Build the Docker image
+    - name: Build BlazorApp
+      run: |-
+         docker rmi $(docker images | grep "<none>" | awk '{print $3}') &> /dev/null 2>/dev/null
