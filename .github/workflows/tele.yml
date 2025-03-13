@@ -14,10 +14,11 @@ jobs:
 
       - name: Get telegram id
         id: tgid
-         if [[ ${{ steps.time.outputs.date }} > "15:00" ]]; then
-         ${{ secrets.TELEGRAM }} = ${{ secrets.TELEGRAM_TO }}
-         else
-         ${{ secrets.TELEGRAM }} = ${{ secrets.TGUSER1 }}
+        run: | 
+          if [[ ${{ steps.time.outputs.date }} > "15:00" ]]; then
+          ${{ secrets.TELEGRAM }} = ${{ secrets.TELEGRAM_TO }}
+          else
+          ${{ secrets.TELEGRAM }} = ${{ secrets.TGUSER1 }}
          
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
