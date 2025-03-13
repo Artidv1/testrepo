@@ -10,13 +10,16 @@ jobs:
         id: time
 #        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
         run: echo "::set-output name=date::$(date -d "+5 hours" +'%H-%m')"
-        
+         if [[ ${{ steps.time.outputs.date }} > "15:00" ]]; then
+         ${{ secrets.TELEGRAM }} = ${{ secrets.TELEGRAM_TO }}
+         else
+         ${{ secrets.TELEGRAM }} = ${{ secrets.TGUSER1 }}
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          to: ${{ secrets.TELEGRAM_TO }}
-          to: $ {{ secrets.TGUSER1 }}
+          to: ${{ secrets.TELEGRAM }}
+#          to: $ {{ secrets.TGUSER1 }}
           
           message: |
             ${{ github.actor }} created commit:
