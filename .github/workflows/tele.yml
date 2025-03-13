@@ -6,8 +6,9 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Get current date
-        id: date
+      - name: Get current time
+        id: time
+#        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
         
       - name: send telegram message on push
@@ -19,7 +20,7 @@ jobs:
           message: |
             ${{ github.actor }} created commit:
             Commit message: ${{ github.event.commits[0].message }}
-            Current date: ${{ steps.date.outputs.date }}
+            Current time: ${{ steps.time.outputs.date }}
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
