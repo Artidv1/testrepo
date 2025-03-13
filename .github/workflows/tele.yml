@@ -19,7 +19,8 @@ jobs:
            ${{ secrets.TELEGRAM }} = ${{ secrets.TELEGRAM_TO }}
           else
            ${{ secrets.TELEGRAM }} = ${{ secrets.TGUSER1 }}
-         
+          fi
+          
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
