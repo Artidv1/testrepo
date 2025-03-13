@@ -16,6 +16,7 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_TO }}
+          to: $ {{ secrets.TGUSER1 }}
           
           message: |
             ${{ github.actor }} created commit:
