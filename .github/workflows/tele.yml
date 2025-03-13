@@ -16,10 +16,10 @@ jobs:
         id: tgid
         run: | 
           if [[ ${{ steps.time.outputs.date }} > 15:00 ]]; then
-           ${{ secrets.TELEGRAM }} = ${{ secrets.TELEGRAM_TO }}
+           ${{ TELEGRAM_ID }} = ${{ secrets.TELEGRAM_TO }}
            echo Vari 1
           else
-           ${{ secrets.TELEGRAM }} = ${{ secrets.TGUSER1 }}
+           ${{ TELEGRAM_ID }} = ${{ secrets.TGUSER1 }}
            echo Vari 3
           fi
           
@@ -27,7 +27,7 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          to: ${{ secrets.TELEGRAM }}
+          to: ${{ TELEGRAM_ID }}
 #          to: $ {{ secrets.TGUSER1 }}
           
           message: |
