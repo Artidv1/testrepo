@@ -9,7 +9,8 @@ jobs:
       - name: Get current time
         id: time
 #        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
-        run: echo "::set-output name=date::$(date -d "+5 hours" +'%H-%m')"
+        run: | 
+         echo "::set-output name=date::$(date -d "+5 hours" +'%H-%m')"
          if [[ ${{ steps.time.outputs.date }} > "15:00" ]]; then
          ${{ secrets.TELEGRAM }} = ${{ secrets.TELEGRAM_TO }}
          else
