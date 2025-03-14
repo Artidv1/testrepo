@@ -28,8 +28,8 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
-#          to: $TELEGRAM_ID
-          to: ${{ secrets.TELEGRAM_TO }}
+          to: $TELEGRAM_ID
+#          to: ${{ secrets.TELEGRAM_TO }}
        
           
 #          to: $ {{ secrets.TGUSER1 }}
