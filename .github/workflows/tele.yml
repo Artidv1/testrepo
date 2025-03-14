@@ -17,7 +17,7 @@ jobs:
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
            secrets.TELEGRAM_ID=${{ secrets.TELEGRAM_TO }}
-           echo $TELEGRAM_ID
+           echo $secrets.TELEGRAM_ID
            else
            secrets.TELEGRAM_ID=${{ secrets.TGUSER1 }}
            echo Vari 3
