@@ -24,11 +24,12 @@ jobs:
            fi
           
       - name: send telegram message on push
+        
         uses: appleboy/telegram-action@master
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: $TELEGRAM_ID
-
+       
           
 #          to: $ {{ secrets.TGUSER1 }}
           
@@ -39,4 +40,4 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            
+          run: echo $TELEGRAM_ID  
