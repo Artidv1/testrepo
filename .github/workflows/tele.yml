@@ -16,7 +16,6 @@ jobs:
         id: tgid
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
-#           TELEGRAM_ID=${{ secrets.TELEGRAM_TO }}
            TELEGRAM_ID=$Denis
            echo Vari 1
            else
