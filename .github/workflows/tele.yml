@@ -15,7 +15,7 @@ jobs:
       - name: Get telegram id
         id: tgid
         run: | 
-           if [[ ${{ steps.time.outputs.date }} > 15:00 ]]; then
+           if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
            TELEGRAM_ID=${{ secrets.TELEGRAM_TO }}
            echo Vari 1
            else
