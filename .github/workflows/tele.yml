@@ -24,11 +24,12 @@ jobs:
            fi
           
       - name: send telegram message on push
-        
+        id: tgsend
         uses: appleboy/telegram-action@master
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          to: $TELEGRAM_ID
+#          to: $TELEGRAM_ID
+          to: ${{ secrets.TELEGRAM_TO }}
        
           
 #          to: $ {{ secrets.TGUSER1 }}
