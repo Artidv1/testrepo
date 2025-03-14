@@ -16,8 +16,7 @@ jobs:
         id: tgid
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
-#           TELEGRAM_ID=${{ secrets.TELEGRAM_TO }}
-           TELEGRAM_ID=498741460
+           TELEGRAM_ID=${{ secrets.TELEGRAM_TO }}
            echo Vari 1
            else
            TELEGRAM_ID=${{ secrets.TGUSER1 }}
@@ -42,4 +41,3 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-
