@@ -16,10 +16,10 @@ jobs:
         id: tgid
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
-           TELEGRAM_ID=${{ secrets.TELEGRAM_TO }}
+           ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TELEGRAM_TO }}
            echo $TELEGRAM_ID
            else
-           TELEGRAM_ID=${{ secrets.TGUSER1 }}
+           ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TGUSER1 }}
            echo Vari 3
            fi
           
@@ -29,7 +29,7 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
 #          to: $TELEGRAM_ID
-          to: ${{ secrets.TELEGRAM_TO }}
+          to: ${{ secrets.TELEGRAM_TEST }}
        
           
 #          to: $ {{ secrets.TGUSER1 }}
