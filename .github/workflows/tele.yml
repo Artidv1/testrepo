@@ -16,8 +16,8 @@ jobs:
         id: tgid
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
-           TELEGRAM_ID=$Denis
-           echo Vari 1 $Denis
+           TELEGRAM_ID=$DENIS
+           echo $DENIS
            else
            TELEGRAM_ID=${{ secrets.TGUSER1 }}
            echo Vari 3
