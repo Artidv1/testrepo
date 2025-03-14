@@ -16,7 +16,7 @@ jobs:
         id: tgid
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
-           TELEGRAM_ID=498741460
+           TELEGRAM_ID="498741460"
            echo $TELEGRAM_ID
            else
            TELEGRAM_ID=${{ secrets.TGUSER1 }}
