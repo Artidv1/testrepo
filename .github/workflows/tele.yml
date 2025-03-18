@@ -56,6 +56,5 @@ jobs:
             Current time: ${{ steps.time.outputs.date }}
             Repository: ${{ github.repository }}
             Message is: ${{ env.test_message }}
-            Message1 is: $test_message
             ${{ env.chat_id }}
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
