@@ -6,8 +6,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-     chat_id: 498741460
-     test_message: 1234
+#     chat_id: 498741460
+#     test_message: 1234
      
     steps:
       - name: echo env
@@ -53,5 +53,4 @@ jobs:
             Current time: ${{ steps.time.outputs.date }}
             Repository: ${{ github.repository }}
             Telegram id is: ${{ $SELECTED }}
-            ${{ env.chat_id }}
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+                       See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
