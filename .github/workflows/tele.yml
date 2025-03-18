@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
      chat_id: 498741460
+     test_message: 1234
      
     steps:
       - name: echo env
@@ -20,8 +21,8 @@ jobs:
 
       - name: Get telegram id
         id: tgid
-        env:
-         test_message: 1234
+#        env:
+#        test_message: 1234
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
            test_message="Updated before 3pm"
