@@ -34,8 +34,7 @@ jobs:
 #          to: ${{ env.chat_id }}
           to: ${{ env.SELECTED }}
        
-          
-#          to: $ {{ secrets.TGUSER1 }}
+          #          to: $ {{ secrets.TGUSER1 }}
           
           message: |
             ${{ github.actor }} created commit:
