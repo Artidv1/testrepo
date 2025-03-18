@@ -1,0 +1,60 @@
+name: telegram message
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+     chat_id: 498741460
+     test_message: 1234
+     
+    steps:
+      - name: echo env
+#        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: echo $chat_id
+     
+      - name: Get current time
+        id: time
+#        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: echo "::set-output name=date::$(date -d "+5 hours" +'%H:%m')"
+
+      - name: Get telegram id
+        id: tgid
+#        env:
+#        test_message: 1234
+        run: | 
+           if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
+           
+           test_message="Updated before 3pm"
+           ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TELEGRAM_TO }}
+           echo  ${{ secrets.TELEGRAM_TEST }}
+           echo test message is $test_message
+           else
+           test_message="Updated after 3pm"
+           ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TGUSER1 }}
+           echo test message is $test_message
+           echo "Updated after 3pm" >> $GITHUB_ENV
+           echo Vari 3
+           fi
+           echo "test_message=$test_message" >> $GITHUB_ENV
+          
+      - name: send telegram message on push
+        id: tgsend
+        uses: appleboy/telegram-action@master
+        with:
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ env.chat_id }}
+#          to: ${{ secrets.TELEGRAM_TEST }}
+       
+          
+#          to: $ {{ secrets.TGUSER1 }}
+          
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            Current time: ${{ steps.time.outputs.date }}
+            Repository: ${{ github.repository }}
+            Message is: ${{ env.test_message }}
+            ${{ env.chat_id }}
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
