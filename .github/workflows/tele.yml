@@ -21,7 +21,7 @@ jobs:
       - name: Get telegram id
         id: tgid
         env:
-               Test_message: "1234"
+         test_message: "1234"
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
            test_message="Updated before 3pm"
