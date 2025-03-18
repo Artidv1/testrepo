@@ -52,5 +52,5 @@ jobs:
             Commit message: ${{ github.event.commits[0].message }}
             Current time: ${{ steps.time.outputs.date }}
             Repository: ${{ github.repository }}
-            Telegram id is: ${{ $SELECTED }}
+            Telegram id is: ${{ env.SELECTED }}
                        See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
