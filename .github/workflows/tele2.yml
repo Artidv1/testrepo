@@ -19,7 +19,7 @@ jobs:
           DICTIONARY["key2"]="1235433753"
           DICTIONARY["key3"]="value3"
 
-          if [[ ${{ github.actor }} == "Artidv1" ]]; then
+          if [[ ${{ github.actor }} == "Artidv11" ]]; then
             SELECTED=${DICTIONARY["key1"]}
           else
             SELECTED=${DICTIONARY["key2"]}
