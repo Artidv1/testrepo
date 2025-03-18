@@ -21,11 +21,13 @@ jobs:
         id: tgid
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
-           env.test_message="Updated before 3pm"
+           env:
+            test_message="Updated before 3pm"
            ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TELEGRAM_TO }}
            echo  ${{ secrets.TELEGRAM_TEST }}
            else
-           env.test_message="Updated after 3pm"
+           env:
+            test_message="Updated after 3pm"
            ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TGUSER1 }}
            echo Vari 3
            fi
