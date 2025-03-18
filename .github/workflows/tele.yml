@@ -21,9 +21,11 @@ jobs:
         id: tgid
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
+           test_message='Updated before 3pm'
            ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TELEGRAM_TO }}
            echo  ${{ secrets.TELEGRAM_TEST }}
            else
+           test_message='Updated after 3pm'
            ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TGUSER1 }}
            echo Vari 3
            fi
@@ -44,5 +46,5 @@ jobs:
             Commit message: ${{ github.event.commits[0].message }}
             Current time: ${{ steps.time.outputs.date }}
             Repository: ${{ github.repository }}
-            
+            $test_message
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
