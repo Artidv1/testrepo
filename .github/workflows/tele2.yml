@@ -5,12 +5,12 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    env:
+#    env:
 #     chat_id: 498741460
 #     test_message: 1234
      
     steps:
-      - name: echo env
+#      - name: echo env
 #        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 #        run: echo $chat_id
      
