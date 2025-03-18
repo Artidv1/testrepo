@@ -46,6 +46,6 @@ jobs:
             Commit message: ${{ github.event.commits[0].message }}
             Current time: ${{ steps.time.outputs.date }}
             Repository: ${{ github.repository }}
-            ${{ env.test_message }}
+            Message is: ${{ env.test_message }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
