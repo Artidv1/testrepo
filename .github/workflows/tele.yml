@@ -24,11 +24,11 @@ jobs:
          test_message: "1234"
         run: | 
            if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
-           test_message="Updated before 3pm"
+           echo "Updated before 3pm" > test_message
            ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TELEGRAM_TO }}
            echo  ${{ secrets.TELEGRAM_TEST }}
            else
-           test_message="Updated after 3pm"
+           echo "Updated after 3pm" > test_message
            ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TGUSER1 }}
            echo Vari 3
            fi
