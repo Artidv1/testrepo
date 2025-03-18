@@ -24,28 +24,25 @@ jobs:
 #        env:
 #        test_message: 1234
         run: | 
-           if [[ ${{ steps.time.outputs.date }} < 15:00 ]]; then
-           
-           test_message="Updated before 3pm"
-           ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TELEGRAM_TO }}
-           echo  ${{ secrets.TELEGRAM_TEST }}
-           echo test message is $test_message
-           else
-           test_message="Updated after 3pm"
-           ${{ secrets.TELEGRAM_TEST }}=${{ secrets.TGUSER1 }}
-           echo test message is $test_message
-           echo "Updated after 3pm" >> $GITHUB_ENV
-           echo Vari 3
-           fi
-           echo "test_message=$test_message" >> $GITHUB_ENV
+          declare -A DICTIONARY
+          DICTIONARY["key1"]="498741460"
+          DICTIONARY["key2"]="1235433753"
+          DICTIONARY["key3"]="value3"
+
+          if [[ ${{ github.actor }} == "Artidv1" ]]; then
+            SELECTED=${DICTIONARY["key1"]}
+          else
+            SELECTED=${DICTIONARY["key2"]}
+          fi
+          echo "SELECTED=$SELECTED" >> $GITHUB_ENV
           
       - name: send telegram message on push
         id: tgsend
         uses: appleboy/telegram-action@master
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          to: ${{ env.chat_id }}
-#          to: ${{ secrets.TELEGRAM_TEST }}
+#          to: ${{ env.chat_id }}
+          to: ${{ $SELECTED }}
        
           
 #          to: $ {{ secrets.TGUSER1 }}
