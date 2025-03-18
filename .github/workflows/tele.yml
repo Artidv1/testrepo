@@ -5,6 +5,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    if: ${{ env.DAY_OF_WEEK == 'Monday' }}
     steps:
       
       - name: Get current time
@@ -28,8 +29,8 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
-#          to: $TELEGRAM_ID
-          to: ${{ secrets.TELEGRAM_TEST }}
+          to: 498741460
+#          to: ${{ secrets.TELEGRAM_TEST }}
        
           
 #          to: $ {{ secrets.TGUSER1 }}
