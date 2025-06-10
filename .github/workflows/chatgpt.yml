@@ -1,12 +1,14 @@
 name: BlazorApp
 
 on:
-[push]
-stages:
-  - build
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+  stages:
+     - build
 
 # Джоб для runner-new-1
-build-runner-1:
+  build-runner-1:
   stage: build
   script:
     - echo "Компиляция на runner-new-1"
