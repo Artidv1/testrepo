@@ -19,5 +19,5 @@ jobs:
   # Build the Docker image
    - name: Build BlazorApp
      run: |-
-         echo $NAME
+         echo Name runner is $NAME
 
