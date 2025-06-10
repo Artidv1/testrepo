@@ -1,3 +1,7 @@
+name: BlazorApp
+
+on:
+[push]
 stages:
   - build
 
