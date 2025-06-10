@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+    paths:
+      - 'BlazorApp/**'
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - 'BlazorApp/**'
+      
+jobs:
+  build:
+
+   runs-on: self-hosted
+   steps:
+  # Build the Docker image
+   - name: Build BlazorApp
+     run: |-
+         echo $NAME
+
