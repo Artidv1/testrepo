@@ -18,12 +18,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Сборка на runner-new-1
-        if: ${{ github.event_name == 'push' || github.event.inputs.Var_run == 'runner1' }}
+        if: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.Var_run == 'runner1') }}
         run: |
           echo "Сборка на runner-new-1"
-          # Здесь может быть ваша реальная команда сборки
+          # Здесь ваша команда сборки
 
       - name: Сборка на runner-new-2
-        if: ${{ github.event.inputs.Var_run == 'runner2' }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.Var_run == 'runner2' }}
         run: |
           echo "Сборка на runner-new-2"
+          # Здесь ваша команда сборки
