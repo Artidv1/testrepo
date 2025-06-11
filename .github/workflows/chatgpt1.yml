@@ -2,7 +2,8 @@ name: Build
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   workflow_dispatch:
     inputs:
       Var_run:
@@ -21,10 +22,8 @@ jobs:
         if: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.Var_run == 'runner1') }}
         run: |
           echo "Сборка на runner-new-1"
-          # Здесь ваша команда сборки
 
       - name: Сборка на runner-new-2
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.Var_run == 'runner2' }}
         run: |
           echo "Сборка на runner-new-2"
-          # Здесь ваша команда сборки
