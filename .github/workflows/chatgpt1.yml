@@ -17,10 +17,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build with runner-new-1
-        if: ${{ github.event.inputs.Var_run == 'runner1' || github.ref == 'refs/heads/master' }}
-        run: echo "Сборка на runner-new-1"
+      - name: Сборка на runner-new-1
+        if: ${{ github.event_name == 'push' || github.event.inputs.Var_run == 'runner1' }}
+        run: |
+          echo "Сборка на runner-new-1"
+          # Здесь может быть ваша реальная команда сборки
 
-      - name: Build with runner-new-2
+      - name: Сборка на runner-new-2
         if: ${{ github.event.inputs.Var_run == 'runner2' }}
-        run: echo "Сборка на runner-new-2"
+        run: |
+          echo "Сборка на runner-new-2"
