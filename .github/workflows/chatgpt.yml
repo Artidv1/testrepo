@@ -6,7 +6,7 @@
   stage: build
   script:
     - echo "Компиляция на runner-new-1"
-    - make build  # или ваша команда сборки
+ #   - make build  # или ваша команда сборки
   tags:
     - runner-new-1
   rules:
@@ -19,7 +19,7 @@ build-runner-2:
   stage: build
   script:
     - echo "Компиляция на runner-new-2"
-    - make build  # или ваша команда сборки
+ #   - make build  # или ваша команда сборки
   tags:
     - runner-new-2
   rules:
