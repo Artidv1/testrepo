@@ -1,6 +1,7 @@
   stages:
      - build
-
+  on:
+   workflow_dispatch:
 # Джоб для runner-new-1
   build-runner-1:
   stage: build
@@ -15,14 +16,14 @@
     - when: never
 
 # Джоб для runner-new-2
-build-runner-2:
-  stage: build
-  script:
+  build-runner-2:
+   stage: build
+   script:
     - echo "Компиляция на runner-new-2"
  #   - make build  # или ваша команда сборки
-  tags:
-    - runner-new-2
-  rules:
-    - if: '$Var_run == "runner2"'
-      when: always
-    - when: never
+   tags:
+     - runner-new-2
+   rules:
+     - if: '$Var_run == "runner2"'
+       when: always
+     - when: never
