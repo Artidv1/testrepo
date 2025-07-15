@@ -34,7 +34,7 @@ jobs:
 
   docker-build:
     needs: choose-runner
-    runs-on: ${{ fromJson('["' + needs.choose-runner.outputs.target-runner + '"]') }}
+    runs-on: ${{ needs.choose-runner.outputs.target-runner }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
