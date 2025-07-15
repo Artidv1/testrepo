@@ -1,4 +1,4 @@
-name: Conditional Docker Build on Self-hosted Runners
+name: New build Conditional Docker Build on Self-hosted Runners
 
 on:
   push:
