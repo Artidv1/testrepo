@@ -1,0 +1,43 @@
+name: Conditional Docker Build on Self-hosted Runners
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  choose-runner:
+    runs-on: ubuntu-latest
+    outputs:
+      target-runner: ${{ steps.set-runner.outputs.target-runner }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Read var-run from docker-compose.yml
+        id: read-var
+        run: |
+          VAR_RUN=$(grep 'var-run=' docker-compose.yml | cut -d '=' -f2 | tr -d '[:space:]')
+          echo "var_run=$VAR_RUN"
+          echo "var_run=$VAR_RUN" >> $GITHUB_OUTPUT
+
+      - name: Set self-hosted runner label based on var-run
+        id: set-runner
+        run: |
+          if [ "${{ steps.read-var.outputs.var_run }}" == "runner1" ]; then
+            echo "target-runner=self-hosted,runner-new-1" >> $GITHUB_OUTPUT
+          elif [ "${{ steps.read-var.outputs.var_run }}" == "runner2" ]; then
+            echo "target-runner=self-hosted,runner-new-2" >> $GITHUB_OUTPUT
+          else
+            echo "Invalid var-run value"
+            exit 1
+
+  docker-build:
+    needs: choose-runner
+    runs-on: ${{ fromJson('["' + needs.choose-runner.outputs.target-runner + '"]') }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build with Docker Compose
+        run: docker-compose build
