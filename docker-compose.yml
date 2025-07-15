@@ -7,4 +7,4 @@ services:
     command: echo "Hello, $GREETING_TARGET!"
     environment:
       - GREETING_TARGET=${GREETING_TARGET}
-      - Var-run=$RUNNER
+      - Var-run=runner2
