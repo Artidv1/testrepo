@@ -25,9 +25,9 @@ jobs:
         id: set-runner
         run: |
           if [ "${{ steps.read-var.outputs.var_run }}" == "runner1" ]; then
-            echo "target-runner=runner-new1" >> $GITHUB_OUTPUT
+            echo "target-runner=runner-new-1" >> $GITHUB_OUTPUT
           elif [ "${{ steps.read-var.outputs.var_run }}" == "runner2" ]; then
-            echo "target-runner=runner-new2" >> $GITHUB_OUTPUT
+            echo "target-runner=runner-new-2" >> $GITHUB_OUTPUT
           else
             echo "Unknown var-run value"
             exit 1
