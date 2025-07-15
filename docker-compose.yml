@@ -1,10 +1,20 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  hello:
-    image: alpine
-    container_name: hello-world-container
-    command: echo "Hello, $GREETING_TARGET!"
+  app:
+    image: my-app-image
+    build:
+      context: .
     environment:
-      - GREETING_TARGET=${GREETING_TARGET}
-      - Var-run=runner2
+      - var-run=runner1  # Измени на runner2 для другого раннера
+
+#version: "3.8"
+
+#services:
+#  hello:
+#    image: alpine
+#    container_name: hello-world-container
+#    command: echo "Hello, $GREETING_TARGET!"
+#    environment:
+#      - GREETING_TARGET=${GREETING_TARGET}
+#      - Var-run=runner2
