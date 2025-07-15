@@ -6,7 +6,8 @@ services:
     build:
       context: .
     environment:
-      - var-run=runner2  # Измени на runner2 для другого раннера
+      - var-run=runner2
+      # Измени на runner2 для другого раннера
 
 #version: "3.8"
 
