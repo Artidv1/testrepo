@@ -7,7 +7,8 @@ on:
 
 jobs:
   choose-runner:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: self-hosted
     outputs:
       target-runner: ${{ steps.set-runner.outputs.target-runner }}
     steps:
