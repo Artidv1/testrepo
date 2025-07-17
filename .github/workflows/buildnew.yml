@@ -28,8 +28,12 @@ jobs:
         run: |
           if [ "$VAR_RUN" = "runner1" ]; then
             echo "target-runner=self-hosted,runner-new-1" >> $GITHUB_OUTPUT
+            ls
+            pwd
           elif [ "$VAR_RUN" = "runner2" ]; then
             echo "target-runner=self-hosted,runner-new-2" >> $GITHUB_OUTPUT
+            ls
+            pwd
           else
             echo "Invalid var-run: $VAR_RUN"
             exit 1
